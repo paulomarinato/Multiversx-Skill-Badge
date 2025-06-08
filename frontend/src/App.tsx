@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import MintForm from './components/MintForm';
+import React from "react";
+import MintForm from "./components/MintForm";
 
-export default function App() {
-  const [isConnected, setIsConnected] = useState(false);
+export default function App(): JSX.Element {
+  const [isConnected, setIsConnected] = React.useState(false);
 
   const handleConnectWallet = () => {
-    // Simula conexão com carteira
+    // Simulação da conexão (substituir pela integração real depois)
     setIsConnected(true);
   };
 
@@ -49,6 +49,3 @@ export default function App() {
     </div>
   );
 }
-
-
-
