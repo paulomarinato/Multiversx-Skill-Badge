@@ -1,0 +1,11 @@
+[package]
+name = "multiversx-skill-badge"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies.multiversx-sc]
+version = "0.44.0"  # última versão estável até junho/2025
+
+[lib]
+crate-type = ["cdylib"]
+name = "multiversx_skill_badge"
