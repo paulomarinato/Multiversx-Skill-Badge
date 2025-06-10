@@ -1,28 +1,8 @@
-
 import React from 'react';
 import { useGetAccountInfo } from './hooks/useGetAccountInfo';
 
-import { useExtensionLogin } from '@multiversx/sdk-dapp/hooks/login/useExtensionLogin';
-import { useWalletConnectV2Login } from '@multiversx/sdk-dapp/hooks/login/useWalletConnectV2Login';
-import { logout } from '@multiversx/sdk-dapp/utils/logout';
-import { LoginMethodsEnum } from '@multiversx/sdk-dapp/types';
-
 function App() {
   const { account } = useGetAccountInfo();
-  const { extensionLogin } = useExtensionLogin();
-  const { walletConnectLogin } = useWalletConnectV2Login();
-
-  const handleExtensionLogin = () => {
-    extensionLogin(LoginMethodsEnum.extension);
-  };
-
-  const handleWalletConnectLogin = () => {
-    walletConnectLogin();
-  };
-
-  const handleLogout = () => {
-    logout();
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-multiversx-dark via-gray-900 to-multiversx-dark">
@@ -36,11 +16,8 @@ function App() {
           </p>
         </div>
 
-        {/* Connect Wallet Card */}
-        <div
-          onClick={handleExtensionLogin}
-          className="bg-gray-800/80 backdrop-blur-sm rounded-xl p-6 w-[300px] transform hover:scale-105 hover:bg-gray-700/90 transition-all duration-300 shadow-lg hover:shadow-multiversx flex flex-col items-center justify-center cursor-pointer group border border-gray-700 hover:border-multiversx-primary"
-        >
+        {/* First Icon Card */}
+        <div className="bg-gray-800/80 backdrop-blur-sm rounded-xl p-6 w-[300px] transform hover:scale-105 hover:bg-gray-700/90 transition-all duration-300 shadow-lg hover:shadow-multiversx flex flex-col items-center justify-center cursor-pointer group border border-gray-700 hover:border-multiversx-primary">
           <div className="w-20 h-20 mb-4 text-multiversx-primary group-hover:scale-110 transition-transform duration-300">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
@@ -50,21 +27,18 @@ function App() {
           <p className="text-gray-400 text-center group-hover:text-gray-300 transition-colors duration-300">Link your MultiversX wallet to begin your journey</p>
         </div>
 
-        {/* QR Code Login Card */}
-        <div
-          onClick={handleWalletConnectLogin}
-          className="bg-gray-800/80 backdrop-blur-sm rounded-xl p-6 w-[300px] transform hover:scale-105 hover:bg-gray-700/90 transition-all duration-300 shadow-lg hover:shadow-multiversx flex flex-col items-center justify-center cursor-pointer group border border-gray-700 hover:border-multiversx-primary"
-        >
+        {/* Second Icon Card */}
+        <div className="bg-gray-800/80 backdrop-blur-sm rounded-xl p-6 w-[300px] transform hover:scale-105 hover:bg-gray-700/90 transition-all duration-300 shadow-lg hover:shadow-multiversx flex flex-col items-center justify-center cursor-pointer group border border-gray-700 hover:border-multiversx-primary">
           <div className="w-20 h-20 mb-4 text-multiversx-primary group-hover:scale-110 transition-transform duration-300">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 6h6v12H9z" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
             </svg>
           </div>
-          <h3 className="text-xl font-semibold text-white mb-2 text-center group-hover:text-multiversx-primary transition-colors duration-300">Login via QR</h3>
-          <p className="text-gray-400 text-center group-hover:text-gray-300 transition-colors duration-300">Use o xPortal para escanear e conectar</p>
+          <h3 className="text-xl font-semibold text-white mb-2 text-center group-hover:text-multiversx-primary transition-colors duration-300">Secure Access</h3>
+          <p className="text-gray-400 text-center group-hover:text-gray-300 transition-colors duration-300">Your assets are protected with state-of-the-art security</p>
         </div>
 
-        {/* Badge Card */}
+        {/* Third Icon Card */}
         <div className="bg-gray-800/80 backdrop-blur-sm rounded-xl p-6 w-[300px] transform hover:scale-105 hover:bg-gray-700/90 transition-all duration-300 shadow-lg hover:shadow-multiversx flex flex-col items-center justify-center cursor-pointer group border border-gray-700 hover:border-multiversx-primary">
           <div className="w-20 h-20 mb-4 text-multiversx-primary group-hover:scale-110 transition-transform duration-300">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
@@ -81,9 +55,6 @@ function App() {
               <h2 className="text-2xl font-bold text-multiversx-primary mb-4">Connected Wallet</h2>
               <p className="text-gray-300 break-all mb-2">{account.address}</p>
               <p className="text-gray-400">Balance: {account?.balance ? account.balance : '0'} EGLD</p>
-              <button onClick={handleLogout} className="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition">
-                Logout
-              </button>
             </div>
           </div>
         )}
